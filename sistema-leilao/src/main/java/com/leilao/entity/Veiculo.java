@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
@@ -18,5 +17,5 @@ public class Veiculo extends Produto {
     private String placa;
     private String modelo;
     private String fabricante;
-    private int ano;    
+    private int ano;
 }

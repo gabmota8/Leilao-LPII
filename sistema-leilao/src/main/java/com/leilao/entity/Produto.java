@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false) 
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "produtos")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -22,10 +22,10 @@ import jakarta.persistence.*;
     @JsonSubTypes.Type(value = ProdutoMonitor.class, name = "MONITOR"),
     @JsonSubTypes.Type(value = ProdutoHub.class, name = "HUB"),
     @JsonSubTypes.Type(value = ProdutoSwitch.class, name = "SWITCH"),
-    @JsonSubTypes.Type(value = ProdutoRoteador.class, name = "ROTEADOR")
+    @JsonSubTypes.Type(value = ProdutoRoteador.class, name = "ROTEADOR"),
+    @JsonSubTypes.Type(value = Veiculo.class, name = "VEICULO")
 })
 public abstract class Produto {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
