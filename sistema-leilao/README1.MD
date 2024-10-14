@@ -133,4 +133,3 @@ CREATE TABLE lei_leilao (
 );
 Scripts SQL de Criação e Inserção:
 O projeto contém um arquivo SQL inicial para criar as tabelas e inserir dados de teste. Certifique-se de rodar os scripts após configurar o banco de dados.
-

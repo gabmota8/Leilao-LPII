@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDateTime;
@@ -17,12 +16,8 @@ import java.util.Collections;
 import java.util.Optional;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.times;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
 
 @QuarkusTest
 public class LeilaoResourceTest {
@@ -35,7 +30,7 @@ public class LeilaoResourceTest {
 
     @BeforeEach
     public void setup() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.openMocks(this); // Inicializa os mocks
     }
 
     @Test
@@ -58,7 +53,6 @@ public class LeilaoResourceTest {
              .body("endereco", equalTo("Rua ABC, 123"))
              .body("cidade", equalTo("São Paulo"));
 
-        // Verificar se o método de mocking foi chamado corretamente
         verify(leilaoRepository, times(1)).findByIdOptional(1L);
     }
 
@@ -71,12 +65,9 @@ public class LeilaoResourceTest {
           .then()
              .statusCode(404);
 
-        // Verificar se o método de mocking foi chamado corretamente
         verify(leilaoRepository, times(1)).findByIdOptional(1L);
     }
 
-
-    @SuppressWarnings("static-access")
     @Test
     public void testCriarLeilaoEndpoint() {
         Leilao leilao = new Leilao();
@@ -98,13 +89,7 @@ public class LeilaoResourceTest {
              .body("endereco", equalTo("Rua ABC, 123"))
              .body("cidade", equalTo("São Paulo"));
 
-        // Verificar se o método de mocking foi chamado corretamente
         verify(leilaoRepository, times(1)).persist(leilao);
-    }
-
-    private Mockito doNothing() {
-   
-      throw new UnsupportedOperationException("Unimplemented method 'doNothing'");
     }
 
     @Test
@@ -127,7 +112,6 @@ public class LeilaoResourceTest {
              .body("size()", is(greaterThan(0)))
              .body("[0].endereco", equalTo("Rua ABC, 123"));
 
-        // Verificar se o método de mocking foi chamado corretamente
         verify(leilaoRepository, times(1)).listAll();
     }
 }
