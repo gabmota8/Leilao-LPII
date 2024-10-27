@@ -11,12 +11,12 @@ import jakarta.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false) 
+@EqualsAndHashCode(callSuper = false)
 @Entity
-@Table(name = "produtos")
+@Table(name = "pro_produto")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo_produto")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo_produto")
+@DiscriminatorColumn(name = "pro_tipo")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "pro_tipo")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = ProdutoNotebook.class, name = "NOTEBOOK"),
     @JsonSubTypes.Type(value = ProdutoMonitor.class, name = "MONITOR"),
@@ -28,13 +28,19 @@ public abstract class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pro_id")
     private Long id;
+
+    @Column(name = "pro_nome", nullable = false, length = 100)
     private String nome;
+
+    @Column(name = "pro_preco_inicial", nullable = false)
     private Double precoInicial;
 
     @ManyToOne
-    @JoinColumn(name = "leilao_id")
+    @JoinColumn(name = "lei_id", nullable = false)
     private Leilao leilao;
 
+    @Column(name = "pro_vendido", nullable = false)
     private boolean vendido;
 }

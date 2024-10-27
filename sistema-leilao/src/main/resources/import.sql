@@ -1,11 +1,11 @@
--- Apagar o esquema existente, caso haja
+--- Apagar o esquema existente, caso haja
 DROP SCHEMA IF EXISTS spring;
-DROP USER IF EXISTS 'user'@'localhost';
+DROP USER IF EXISTS "new_user"@"localhost";
 
 -- Criar o esquema e usuário
 CREATE SCHEMA spring;
-CREATE USER 'user'@'localhost' IDENTIFIED BY 'pass123';
-GRANT SELECT, INSERT, DELETE, UPDATE ON spring.* TO 'user'@'localhost';
+CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'pass123';
+GRANT SELECT, INSERT, DELETE, UPDATE ON spring.* TO 'new_user'@'localhost';
 FLUSH PRIVILEGES;
 USE spring;
 
