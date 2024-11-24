@@ -1,8 +1,8 @@
-#Sistema de Leilão Eletrônico
+#Sistema de Leilão Eletrônico#
 
 Este projeto é um sistema de leilão eletrônico que permite a gestão de leilões de dispositivos de informática e veículos, com funcionalidades de cadastro de produtos, clientes, lances e consulta de leilões. O sistema foi desenvolvido utilizando Java 17, com o framework Quarkus, JPA com Hibernate, Lombok e banco de dados H2.
 
-Requisitos do Projeto
+##Requisitos do Projeto
 Funcionalidades principais:
 Cadastro de produtos: dispositivos de informática (notebooks, monitores, hubs, switches, roteadores) e veículos (carros, motocicletas, caminhões).
 
@@ -16,7 +16,7 @@ Associação de produtos a leilões: produtos são vinculados a leilões, e caso
 
 Exportação de leilões: exportar detalhes de leilões em um formato de arquivo .DET contendo informações do leilão, produtos, clientes e histórico de lances.
 
-Principais Pacotes:
+###Principais Pacotes:
 controller: Controladores REST que expõem os endpoints da API.
 
 entity: Classes que representam as entidades do banco de dados, como Leilao, Produto, Cliente, etc.
@@ -25,7 +25,7 @@ repository: Interfaces que utilizam JPA para realizar operações de CRUD no ban
 
 service: Contém a lógica de negócios do sistema, como validações e regras de lances.
 
-Configuração do Projeto
+####Configuração do Projeto
 Dependências:
 O projeto utiliza o Maven para gerenciar as dependências. As principais dependências estão no arquivo pom.xml:
 
