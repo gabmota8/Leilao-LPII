@@ -1,18 +1,9 @@
 package com.leilao.entity;
 
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -25,19 +16,20 @@ public class Lance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lan_id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "produto_id", nullable = false)
+    @JoinColumn(name = "pro_id", nullable = false)
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
+    @JoinColumn(name = "usr_id", nullable = false)
     private Cliente cliente;
 
-    @Column(name = "valor", nullable = false)
+    @Column(name = "lan_valor", nullable = false)
     private Double valor;
 
-    @Column(name = "data_hora", nullable = false)
+    @Column(name = "lan_data_hora", nullable = false)
     private LocalDateTime dataHora;
 }
