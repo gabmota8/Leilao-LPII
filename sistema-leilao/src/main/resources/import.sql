@@ -107,3 +107,39 @@ CREATE INDEX idx_pro_tipo ON pro_produto (pro_tipo);
 
 -- Inserção inicial de dados
 INSERT INTO usr_usuario (usr_nome, usr_email, usr_senha) VALUES ('Nome do Usuário', 'email@dominio.com', 'senha_hashada');
+
+-- Inserção de dados na tabela usr_usuario
+INSERT INTO usr_usuario (usr_nome, usr_email, usr_senha) VALUES ('Nome do Usuário', 'email@dominio.com', 'senha_hashada');
+
+-- Inserção de dados na tabela aut_autorizacao
+INSERT INTO aut_autorizacao (aut_nome) VALUES ('ROLE_USER');
+
+-- Inserção de dados na tabela uau_usuario_autorizacao
+-- Supondo que usr_id = 1 e aut_id = 1 existem.
+INSERT INTO uau_usuario_autorizacao (usr_id, aut_id) VALUES (1, 1);
+
+-- Inserção de dados na tabela ins_instituicao_financeira
+INSERT INTO ins_instituicao_financeira (ins_nome, ins_cnpj) VALUES ('Instituição Financeira XYZ', '00.000.000/0000-00');
+
+-- Inserção de dados na tabela lei_leilao
+-- Supondo que ins_id = 1 existe.
+INSERT INTO lei_leilao (lei_endereco, lei_cidade, lei_estado, lei_data_visita, lei_data_leilao, lei_status, ins_id) 
+VALUES ('Rua Exemplo, 123', 'Cidade Exemplo', 'SP', '2024-01-01 10:00:00', '2024-01-02 10:00:00', 'EM_ABERTO', 1);
+
+-- Inserção de dados na tabela pro_produto
+-- Supondo que lei_id = 1 existe.
+INSERT INTO pro_produto (pro_nome, pro_preco_inicial, pro_tipo, pro_vendido, lei_id) 
+VALUES ('Notebook XYZ', 1500.00, 'INFORMATICA', FALSE, 1);
+
+-- Inserção de dados na tabela inf_dispositivo
+-- Supondo que pro_id = 1 existe.
+INSERT INTO inf_dispositivo (inf_especificacoes) VALUES ('Especificações do Dispositivo');
+
+-- Inserção de dados na tabela vei_veiculo
+INSERT INTO vei_veiculo (vei_placa, vei_modelo, vei_fabricante, vei_ano) 
+VALUES ('ABC-1234', 'Modelo XYZ', 'Fabricante XYZ', 2024);
+
+-- Inserção de dados na tabela lan_lance
+-- Supondo que pro_id = 1 e usr_id = 1 existem.
+INSERT INTO lan_lance (lan_valor, lan_data_hora, pro_id, usr_id) 
+VALUES (1600.00, '2024-01-03 10:00:00', 1, 1);
