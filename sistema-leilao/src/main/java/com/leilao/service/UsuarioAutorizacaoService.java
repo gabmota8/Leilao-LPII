@@ -21,17 +21,17 @@ public class UsuarioAutorizacaoService {
     }
 
     public List<UsuarioAutorizacao> listarTodos() {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'listarTodos'");
     }
 
     public UsuarioAutorizacao buscarPorId(Long id) {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
     }
 
     public void excluirUsuarioAutorizacao(Long id) {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'excluirUsuarioAutorizacao'");
     }
 }

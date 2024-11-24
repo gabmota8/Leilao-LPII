@@ -1,6 +1,7 @@
 package com.leilao.controller;
 
 import com.leilao.entity.Produto;
+import com.leilao.entity.ProdutoNotebook;
 import com.leilao.service.ProdutoService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -18,11 +19,17 @@ public class ProdutoController {
     ProdutoService produtoService;
 
     @POST
-    @Path("/cadastrar")
-    public Response cadastrarProduto(Produto produto) {
-        Produto novoProduto = produtoService.cadastrarProduto(produto);
-        return Response.status(Response.Status.CREATED).entity(novoProduto).build();
+@Path("/cadastrar")
+public Response cadastrarProduto(Produto produto) {
+    System.out.println("Recebendo requisição para cadastrar produto: " + produto);
+    if (produto instanceof ProdutoNotebook) {
+        ProdutoNotebook notebook = (ProdutoNotebook) produto;
+        System.out.println("Armazenamento: " + notebook.getArmazenamento());
     }
+    Produto novoProduto = produtoService.cadastrarProduto(produto);
+    return Response.status(Response.Status.CREATED).entity(novoProduto).build();
+}
+
 
     @GET
     public List<Produto> listarTodos() {

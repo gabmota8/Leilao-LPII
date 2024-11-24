@@ -18,11 +18,12 @@ public class LeilaoController {
     LeilaoService leilaoService;
 
     @POST
-    @Path("/cadastrar")
-    public Response cadastrarLeilao(Leilao leilao) {
-        Leilao novoLeilao = leilaoService.cadastrarLeilao(leilao);
-        return Response.status(Response.Status.CREATED).entity(novoLeilao).build();
-    }
+@Path("/cadastrar")
+public Response cadastrarLeilao(Leilao leilao) {
+    System.out.println("Recebendo requisição para cadastrar leilão: " + leilao);
+    Leilao novoLeilao = leilaoService.cadastrarLeilao(leilao);
+    return Response.status(Response.Status.CREATED).entity(novoLeilao).build();
+}
 
     @GET
     public List<Leilao> listarTodos() {
