@@ -1,8 +1,6 @@
 # Sistema de Leilão Eletrônico
 
-Este projeto é um sistema de leilão eletrônico que permite a gestão de leilões de dispositivos de informática e veículos,
-com funcionalidades de cadastro de produtos, clientes, lances e consulta de leilões. O sistema foi desenvolvido utilizando
-Java 17, com o framework Quarkus, JPA com Hibernate, Lombok e banco de dados MySQL.
+Este projeto é um sistema de leilão eletrônico que permite a gestão de leilões de dispositivos de informática e veículos, com funcionalidades de cadastro de produtos, clientes, lances e consulta de leilões. O sistema foi desenvolvido utilizando Java 17, com o framework Quarkus, JPA com Hibernate, Lombok e banco de dados H2.
 
 ## Requisitos do Projeto
 
@@ -13,8 +11,6 @@ Java 17, com o framework Quarkus, JPA com Hibernate, Lombok e banco de dados MyS
 - **Gestão de lances**: permitir que clientes deem lances em produtos e mantenham histórico de lances.
 - **Associação de produtos a leilões**: produtos são vinculados a leilões, e caso não sejam vendidos, podem ser reassociados a outro leilão.
 - **Exportação de leilões**: exportar detalhes de leilões em um formato de arquivo `.DET` contendo informações do leilão, produtos, clientes e histórico de lances.
-
-
 
 ### Principais Pacotes:
 
@@ -31,8 +27,7 @@ O projeto utiliza o Maven para gerenciar as dependências. As principais depend�
 - **Quarkus**: Framework principal do projeto.
 - **Hibernate ORM com Panache**: Utilizado para facilitar a integração com o banco de dados via JPA.
 - **Lombok**: Para automatizar a criação de getters, setters e construtores.
-- **MySQL**: Banco de dados relacional utilizado.
-- **JUnit 5 e REST Assured**: Utilizados para testes automáticos.
+- **H2**: Banco de dados em memória utilizado.
 
 ### Passos para configurar o projeto:
 
@@ -42,26 +37,17 @@ O projeto utiliza o Maven para gerenciar as dependências. As principais depend�
     cd sistema-leilao
     ```
 
-2. **Configure o MySQL**:
-    Crie um banco de dados MySQL e um usuário com permissões adequadas. Você pode usar o seguinte script SQL como base:
-    ```sql
-    CREATE DATABASE leilao;
-    CREATE USER 'leilao_user'@'localhost' IDENTIFIED BY 'senha123';
-    GRANT ALL PRIVILEGES ON leilao.* TO 'leilao_user'@'localhost';
-    FLUSH PRIVILEGES;
-    ```
-
-3. **Configuração do `application.properties`**:
-    No arquivo `src/main/resources/application.properties`, configure as credenciais do banco de dados:
+2. **Configuração do `application.properties`**:
+    No arquivo `src/main/resources/application.properties`, configure as credenciais do banco de dados H2:
     ```properties
-    quarkus.datasource.db-kind=mysql
-    quarkus.datasource.jdbc.url=jdbc:mysql://localhost:3306/leilao
-    quarkus.datasource.username=root
-    quarkus.datasource.password=luanam
+    quarkus.datasource.db-kind=h2
+    quarkus.datasource.jdbc.url=jdbc:h2:mem:leilao;DB_CLOSE_DELAY=-1
+    quarkus.datasource.username=sa
+    quarkus.datasource.password=
     quarkus.hibernate-orm.database.generation=drop-and-create  # Para desenvolvimento
     ```
 
-4. **Iniciar o projeto**:
+3. **Iniciar o projeto**:
     Rode o seguinte comando para iniciar o servidor Quarkus no modo de desenvolvimento:
     ```bash
     ./mvnw compile quarkus:dev
@@ -89,27 +75,16 @@ O projeto utiliza o Maven para gerenciar as dependências. As principais depend�
 
 ## Documentação da API
 
-A documentação completa da API pode ser acessada via Swagger em:
-(http://localhost:8080/q/swagger-ui)
+A documentação completa da API pode ser acessada via Swagger em: [http://localhost:8080/q/swagger-ui](http://localhost:8080/q/swagger-ui)
 
-## Como realizar os testes
+## Detalhes do Banco de Dados (H2)
 
-O projeto utiliza JUnit 5 e REST Assured para realizar testes automáticos. Para rodar os testes, use o seguinte comando:
-```bash
-./mvnw test
+O banco de dados utilizado é o H2. Abaixo estão as principais tabelas e suas descrições:
 
-Detalhes do Banco de Dados (MySQL)
-O banco de dados utilizado é o MySQL. Abaixo estão as principais tabelas e suas descrições:
-
-Tabelas Principais:
-usr_usuario: Armazena informações dos clientes do sistema (nome, email, senha).
-
-aut_autorizacao: Armazena os papéis de autorização (por exemplo, ROLE_ADMIN).
-
-lei_leilao: Armazena os dados dos leilões, como endereço, datas de visitação e ocorrência, status.
-
-pro_produto: Armazena os produtos que serão leiloados (dispositivos de informática e veículos).
-
-lan_lance: Armazena os lances feitos pelos clientes nos produtos.
-
-ins_instituicao_financeira: Armazena as instituições financeiras responsáveis pelos pagamentos dos leilões.
+### Tabelas Principais:
+- **usr_usuario**: Armazena informações dos clientes do sistema (nome, email, senha).
+- **aut_autorizacao**: Armazena os papéis de autorização (por exemplo, ROLE_ADMIN).
+- **lei_leilao**: Armazena os dados dos leilões, como endereço, datas de visitação e ocorrência, status.
+- **pro_produto**: Armazena os produtos que serão leiloados (dispositivos de informática e veículos).
+- **lan_lance**: Armazena os lances feitos pelos clientes nos produtos.
+- **ins_instituicao_financeira**: Armazena as instituições financeiras responsáveis pelos pagamentos dos leilões.
