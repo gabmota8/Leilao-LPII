@@ -1,5 +1,5 @@
 Sistema de Leilão Eletrônico
-Este projeto é um sistema de leilão eletrônico que permite a gestão de leilões de dispositivos de informática e veículos, com funcionalidades de cadastro de produtos, clientes, lances e consulta de leilões. O sistema foi desenvolvido utilizando Java com o framework Quarkus, JPA com Hibernate, Lombok e banco de dados MySQL.
+Este projeto é um sistema de leilão eletrônico que permite a gestão de leilões de dispositivos de informática e veículos, com funcionalidades de cadastro de produtos, clientes, lances e consulta de leilões. O sistema foi desenvolvido utilizando Java com o framework Quarkus, JPA com Hibernate, Lombok e banco de dados H2.
 
 Requisitos do Projeto
 Funcionalidades principais:

@@ -19,17 +19,16 @@ public class ProdutoController {
     ProdutoService produtoService;
 
     @POST
-@Path("/cadastrar")
-public Response cadastrarProduto(Produto produto) {
-    System.out.println("Recebendo requisição para cadastrar produto: " + produto);
-    if (produto instanceof ProdutoNotebook) {
-        ProdutoNotebook notebook = (ProdutoNotebook) produto;
-        System.out.println("Armazenamento: " + notebook.getArmazenamento());
+    @Path("/cadastrar")
+    public Response cadastrarProduto(Produto produto) {
+        System.out.println("Recebendo requisição para cadastrar produto: " + produto);
+        if (produto instanceof ProdutoNotebook) {
+            ProdutoNotebook notebook = (ProdutoNotebook) produto;
+            System.out.println("Armazenamento: " + notebook.getArmazenamento());
+        }
+        Produto novoProduto = produtoService.cadastrarProduto(produto);
+        return Response.status(Response.Status.CREATED).entity(novoProduto).build();
     }
-    Produto novoProduto = produtoService.cadastrarProduto(produto);
-    return Response.status(Response.Status.CREATED).entity(novoProduto).build();
-}
-
 
     @GET
     public List<Produto> listarTodos() {

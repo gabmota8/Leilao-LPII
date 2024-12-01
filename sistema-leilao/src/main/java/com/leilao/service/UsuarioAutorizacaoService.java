@@ -21,17 +21,20 @@ public class UsuarioAutorizacaoService {
     }
 
     public List<UsuarioAutorizacao> listarTodos() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodos'");
+        return usuarioAutorizacaoRepository.findAll().list();
     }
 
     public UsuarioAutorizacao buscarPorId(Long id) {
-       
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        return usuarioAutorizacaoRepository.findById(id);
     }
 
+    @Transactional
     public void excluirUsuarioAutorizacao(Long id) {
-       
-        throw new UnsupportedOperationException("Unimplemented method 'excluirUsuarioAutorizacao'");
+        UsuarioAutorizacao usuarioAutorizacao = usuarioAutorizacaoRepository.findById(id);
+        if (usuarioAutorizacao != null) {
+            usuarioAutorizacaoRepository.delete(usuarioAutorizacao);
+        } else {
+            throw new IllegalArgumentException("Usuário autorização não encontrado");
+        }
     }
 }
