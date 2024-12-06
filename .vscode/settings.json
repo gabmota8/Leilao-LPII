@@ -1,3 +1,21 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cSpell.words": [
+        "Configuração",
+        "datasource",
+        "detalhados",
+        "hquarkus",
+        "inicial",
+        "leilao",
+        "Porta",
+        "preco",
+        "produto",
+        "Roteador",
+        "Servidor",
+        "smallrye",
+        "tipo",
+        "Veiculo",
+        "vendido",
+        "Versão"
+    ]
 }
