@@ -22,4 +22,24 @@ public class ClienteServiceTest {
     void testListarTodos() {
 
     }
+
+    @Test
+    void testBuscarPorId2() {
+        
+    }
+
+    @Test
+    void testCadastrarCliente2() {
+        
+    }
+
+    @Test
+    void testExcluirCliente2() {
+        
+    }
+
+    @Test
+    void testListarTodos2() {
+        
+    }
 }

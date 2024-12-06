@@ -18,7 +18,7 @@ public class LanceController {
     LanceService lanceService;
 
     @POST
-    @Path("/cadastrar")
+    @Path("/canaster")
     public Response registrarLance(Lance lance) {
         Optional<Lance> novoLance = lanceService.registrarLance(lance);
         if (novoLance.isPresent()) {

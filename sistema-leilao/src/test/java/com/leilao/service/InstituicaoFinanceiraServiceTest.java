@@ -22,4 +22,24 @@ public class InstituicaoFinanceiraServiceTest {
     void testListarTodas() {
 
     }
+
+    @Test
+    void testBuscarPorId2() {
+        
+    }
+
+    @Test
+    void testCadastrarInstituicao2() {
+        
+    }
+
+    @Test
+    void testExcluirInstituicao2() {
+        
+    }
+
+    @Test
+    void testListarTodas2() {
+        
+    }
 }
